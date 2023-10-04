@@ -1,8 +1,10 @@
-package com.github.vaatech.moneywise.migrator.config.db;
+package com.github.vaatech.migrator.config.db;
 
-import com.github.vaatech.moneywise.migrator.util.migrationmanager.MigrationManager;
+import com.github.vaatech.migrator.util.migrationmanager.MigrationManager;
 import lombok.extern.slf4j.Slf4j;
+import org.flywaydb.core.Flyway;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +13,7 @@ import org.springframework.core.annotation.Order;
 
 @Slf4j
 @Configuration(proxyBeanMethods = false)
+@ConditionalOnBean(Flyway.class)
 public class FlywayConfiguration {
 
   @Bean

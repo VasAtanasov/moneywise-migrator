@@ -1,4 +1,4 @@
-package com.github.vaatech.moneywise.migrator.util.repository;
+package com.github.vaatech.migrator.util.repository;
 
 import jakarta.persistence.EntityManager;
 import java.io.Serializable;

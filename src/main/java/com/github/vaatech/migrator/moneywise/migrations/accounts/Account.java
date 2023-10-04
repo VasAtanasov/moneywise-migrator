@@ -1,4 +1,4 @@
-package com.github.vaatech.moneywise.migrator.migrations.accounts;
+package com.github.vaatech.migrator.moneywise.migrations.accounts;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;

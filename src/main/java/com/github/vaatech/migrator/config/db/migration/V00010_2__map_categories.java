@@ -1,6 +1,6 @@
-package com.github.vaatech.moneywise.migrator.config.db.migration;
+package com.github.vaatech.migrator.config.db.migration;
 
-import com.github.vaatech.moneywise.migrator.migrations.category.CategoryRepository;
+import com.github.vaatech.migrator.moneywise.migrations.category.MWCategoryRepository;
 import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;
 import org.springframework.beans.BeansException;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class V00010_2__map_categories extends BaseJavaMigration implements ApplicationContextAware {
 
-  private Lazy<CategoryRepository> categoryRepository;
+  private Lazy<MWCategoryRepository> categoryRepository;
   private ApplicationContext context;
 
   @Override
@@ -25,6 +25,6 @@ public class V00010_2__map_categories extends BaseJavaMigration implements Appli
   @Override
   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
     this.context = applicationContext;
-    this.categoryRepository = Lazy.of(() -> applicationContext.getBean("categoryRepository", CategoryRepository.class));
+    this.categoryRepository = Lazy.of(() -> applicationContext.getBean("MWCategoryRepository", MWCategoryRepository.class));
   }
 }

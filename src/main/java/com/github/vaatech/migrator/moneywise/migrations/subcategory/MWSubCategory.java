@@ -1,6 +1,6 @@
-package com.github.vaatech.moneywise.migrator.migrations.subcategory;
+package com.github.vaatech.migrator.moneywise.migrations.subcategory;
 
-import com.github.vaatech.moneywise.migrator.migrations.category.Category;
+import com.github.vaatech.migrator.moneywise.migrations.category.MWCategory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Table(name = "sub_categories")
 @Getter
 @Setter
-public class SubCategory {
+public class MWSubCategory {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "_ID")
@@ -20,5 +20,5 @@ public class SubCategory {
 
   @ManyToOne
   @JoinColumn(name = "parent_category_id")
-  private Category category;
+  private MWCategory category;
 }
