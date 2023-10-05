@@ -6,7 +6,6 @@ import java.util.Objects;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
-import org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -101,42 +100,6 @@ public class DBConfiguration {
             LocalContainerEntityManagerFactoryBean entityManagerFactoryBean) {
       return new JpaTransactionManager(
           Objects.requireNonNull(entityManagerFactoryBean.getObject()));
-    }
-  }
-
-  static final class PropertiesJdbcConnectionDetails implements JdbcConnectionDetails {
-
-    private final DataSourceProperties properties;
-
-    PropertiesJdbcConnectionDetails(DataSourceProperties properties) {
-      this.properties = properties;
-    }
-
-    @Override
-    public String getUsername() {
-      return this.properties.determineUsername();
-    }
-
-    @Override
-    public String getPassword() {
-      return this.properties.determinePassword();
-    }
-
-    @Override
-    public String getJdbcUrl() {
-      return this.properties.determineUrl();
-    }
-
-    @Override
-    public String getDriverClassName() {
-      return this.properties.determineDriverClassName();
-    }
-
-    @Override
-    public String getXaDataSourceClassName() {
-      return (this.properties.getXa().getDataSourceClassName() != null)
-          ? this.properties.getXa().getDataSourceClassName()
-          : JdbcConnectionDetails.super.getXaDataSourceClassName();
     }
   }
 }
